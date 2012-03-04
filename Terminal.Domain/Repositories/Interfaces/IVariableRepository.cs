@@ -14,13 +14,14 @@ namespace Terminal.Domain.Repositories.Interfaces
         /// <summary>
         /// Adds or edits a variable in the repository.
         /// </summary>
-        /// <param name="variable">The variable to be added.</param>
-        void ModifyVariable(Variable variable);
+        /// <param name="name">The name of the variable to be added or modified.</param>
+        /// <param name="value">The value of the variable to be added or modified.</param>
+        void ModifyVariable(string name, string value);
 
         /// <summary>
         /// Gets a variable from the variable repository.
         /// </summary>
         /// <param name="name">The name of the variable.</param>
-        Variable GetVariable(string name);
+        string GetVariable(string name);
     }
 }

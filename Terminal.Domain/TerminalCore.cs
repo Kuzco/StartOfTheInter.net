@@ -20,7 +20,7 @@ using CodeKicker.BBCode;
 namespace Terminal.Domain
 {
     /// <summary>
-    /// The terminal API is the entry point to Terminal.Domain.
+    /// The terminal core is the entry point to Terminal.Domain.
     /// Pass in a command string adn Terminal.Domain will parse it and execute it.
     /// Set a command context first and Terminal.Domain will handle the command context as well.
     /// Set a user and Terminal.Domain will automatically determine which commands are avialable based on the user's roles.
@@ -50,7 +50,7 @@ namespace Terminal.Domain
 
         /// <summary>
         /// The current username. This is an alternative to setting CurrentUser.
-        /// Setting the username will cause the terminal API to pull the user from the database based on their username.
+        /// Setting the username will cause the terminal core to pull the user from the database based on their username.
         /// This is ideal for web applications where a User object cannot be held in memory the entire time and must be retrieved on each request.
         /// </summary>
         public string Username
@@ -84,7 +84,7 @@ namespace Terminal.Domain
         private string _ipAddress;
 
         /// <summary>
-        /// The command context tells the terminal API what state the application is in.
+        /// The command context tells the terminal core what state the application is in.
         /// It must be set before calling the ExecuteCommand method and it is returned as part of the command result returned by ExecuteCommand.
         /// 
         /// Options:
@@ -110,7 +110,7 @@ namespace Terminal.Domain
         #region Constructors
 
         /// <summary>
-        /// Creates a new instance of the API. Ideally this should be created by Ninject to ensure all dependencies are handled appropriately.
+        /// Creates a new instance of the core. Ideally this should be created by Ninject to ensure all dependencies are handled appropriately.
         /// Note: A TerminalBindings class lives in the Terminal.Domain.Ninject.BindingModules namespace. Use this when building your Ninject kernel to ensure proper dependency injection.
         /// 
         /// Sampel: IKernel kernel = new StandardKernel(new TerminalBindings());

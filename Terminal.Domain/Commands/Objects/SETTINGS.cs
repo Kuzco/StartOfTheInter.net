@@ -254,20 +254,20 @@ namespace Terminal.Domain.Commands.Objects
                                 var registrationStatus = _variableRepository.GetVariable("Registration");
                                 if (registration == "1")
                                 {
-                                    registrationStatus.Value = "Open";
+                                    registrationStatus = "Open";
                                     this.CommandResult.WriteLine("Registration opened successfully.");
                                 }
                                 else if (registration == "2")
                                 {
-                                    registrationStatus.Value = "Invite-Only";
+                                    registrationStatus = "Invite-Only";
                                     this.CommandResult.WriteLine("Registration set to invite only.");
                                 }
                                 else if (registration == "3")
                                 {
-                                    registrationStatus.Value = "Closed";
+                                    registrationStatus = "Closed";
                                     this.CommandResult.WriteLine("Registration closed successfully.");
                                 }
-                                _variableRepository.ModifyVariable(registrationStatus);
+                                _variableRepository.ModifyVariable("Registration", registrationStatus);
                             }
                         }
                     }

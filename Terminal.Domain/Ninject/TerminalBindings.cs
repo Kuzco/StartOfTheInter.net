@@ -77,7 +77,7 @@ namespace Terminal.Domain.Ninject
             this.Bind<ICommand>().To<REGISTER>();
             this.Bind<ICommand>().To<SETTINGS>();
             this.Bind<ICommand>().To<STATS>();
-            this.Bind<ICommand>().To<TEST>();
+            this.Bind<ICommand>().To<SAMPLE>();
             this.Bind<ICommand>().To<TOPIC>();
             this.Bind<ICommand>().To<USER>();
         }

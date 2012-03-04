@@ -10,7 +10,7 @@ using Terminal.Domain.Settings;
 namespace Terminal.Domain.Objects
 {
     /// <summary>
-    /// This object contains information that is usable by a UI project in determining what and how to display the results of the terminal API.
+    /// This object contains information that is usable by a UI project in determining what and how to display the results of the terminal core.
     /// </summary>
     public class CommandResult
     {
@@ -30,7 +30,7 @@ namespace Terminal.Domain.Objects
 
         /// <summary>
         /// The command context as set by the executed command.
-        /// This should usually be passed back into the terminal API on the next execution.
+        /// This should usually be passed back into the terminal core on the next execution.
         /// </summary>
         public CommandContext CommandContext { get; set; }
 

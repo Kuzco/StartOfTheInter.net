@@ -9,19 +9,19 @@ using Terminal.Domain.Entities;
 namespace Terminal.Domain.Commands.Interfaces
 {
     /// <summary>
-    /// A command that is available for execution by the terminal API.
+    /// A command that is available for execution by the terminal core.
     /// </summary>
     public interface ICommand
     {
         /// <summary>
-        /// The command result created by the terminal API.
-        /// The command can modify and add to this result and return it to the terminal API.
+        /// The command result created by the terminal core.
+        /// The command can modify and add to this result and return it to the terminal core.
         /// </summary>
         CommandResult CommandResult { get; set; }
 
         /// <summary>
         /// A list of commands available to the user.
-        /// The terminal API should set this to the list of commands that are available to the user.
+        /// The terminal core should set this to the list of commands that are available to the user.
         /// </summary>
         IEnumerable<ICommand> AvailableCommands { get; set; }
 
@@ -56,7 +56,7 @@ namespace Terminal.Domain.Commands.Interfaces
         /// <summary>
         /// Executes the command's function and returns a command result.
         /// </summary>
-        /// <param name="args">The arguments passed in from the terminal API.</param>
+        /// <param name="args">The arguments passed in from the terminal core.</param>
         /// <returns>A command result containing usable information by the UI.</returns>
         void Invoke(string[] args);
     }

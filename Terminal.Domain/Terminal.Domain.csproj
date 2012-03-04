@@ -103,7 +103,7 @@
     <Compile Include="Commands\Objects\LINK.cs" />
     <Compile Include="Commands\Objects\LINKS.cs" />
     <Compile Include="Commands\Objects\MARKET.cs" />
-    <Compile Include="Commands\Objects\TEST.cs" />
+    <Compile Include="Commands\Objects\SAMPLE.cs" />
     <Compile Include="Commands\Objects\INITIALIZE.cs" />
     <Compile Include="Commands\Objects\USER.cs" />
     <Compile Include="Commands\Objects\STATS.cs" />

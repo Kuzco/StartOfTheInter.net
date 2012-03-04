@@ -104,7 +104,7 @@ namespace Terminal.Domain.Commands.Objects
             }
 
             var registrationStatus = _variableRepository.GetVariable("Registration");
-            if (registrationStatus.Value.Equals("Open", StringComparison.InvariantCultureIgnoreCase) || this.CommandResult.CommandContext.PromptData != null)
+            if (registrationStatus.Equals("Open", StringComparison.InvariantCultureIgnoreCase) || this.CommandResult.CommandContext.PromptData != null)
             {
                 this.CommandResult.CommandContext.Prompt = false;
                 bool verified = false;
@@ -315,7 +315,7 @@ namespace Terminal.Domain.Commands.Objects
                     this.CommandResult.CommandContext.Deactivate();
                 }
             }
-            else if (registrationStatus.Value.Equals("Invite-Only", StringComparison.InvariantCultureIgnoreCase))
+            else if (registrationStatus.Equals("Invite-Only", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (lue)
                 {
@@ -328,7 +328,7 @@ namespace Terminal.Domain.Commands.Objects
                     this.CommandResult.CommandContext.SetPrompt(this.Name, args, "Invite Code");
                 }
             }
-            else if (registrationStatus.Value.Equals("Closed", StringComparison.InvariantCultureIgnoreCase))
+            else if (registrationStatus.Equals("Closed", StringComparison.InvariantCultureIgnoreCase))
                 this.CommandResult.WriteLine("Registration is currently closed.");
         }
     }

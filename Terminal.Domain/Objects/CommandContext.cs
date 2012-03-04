@@ -8,7 +8,7 @@ namespace Terminal.Domain.Objects
 {
     /// <summary>
     /// The command context describes the current state of the terminal.
-    /// It helps the terminal API make decisions about how to execute commands.
+    /// It helps the terminal core make decisions about how to execute commands.
     /// </summary>
     [Serializable]
     public class CommandContext

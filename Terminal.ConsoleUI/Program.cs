@@ -119,7 +119,7 @@ namespace Terminal.ConsoleUI
         }
 
         /// <summary>
-        /// Pass the command string to the terminal API for execution, then examine the resulting instructions.
+        /// Pass the command string to the terminal core for execution, then examine the resulting instructions.
         /// </summary>
         /// <param name="commandString">The command string passed from the command line.</param>
         private static void InvokeCommand(string commandString)
@@ -169,17 +169,17 @@ namespace Terminal.ConsoleUI
         /// <summary>
         /// Examine command result and perform relevant actions.
         /// </summary>
-        /// <param name="commandResult">The command result returned by the terminal API.</param>
+        /// <param name="commandResult">The command result returned by the terminal core.</param>
         private static void InterpretResult(CommandResult commandResult)
         {
-            // Set the terminal API command context to the one returned in the result.
+            // Set the terminal core command context to the one returned in the result.
             _commandContext = commandResult.CommandContext;
 
             // If the result calls for the screen to be cleared, clear it.
             if (commandResult.ClearScreen)
                 Console.Clear();
 
-            // Set the terminal API current user to the one returned in the result and display the username in the console title bar.
+            // Set the terminal core current user to the one returned in the result and display the username in the console title bar.
             _username = commandResult.CurrentUser != null ? commandResult.CurrentUser.Username : null;
             Console.Title = commandResult.TerminalTitle;
 
