@@ -36,8 +36,6 @@ namespace Terminal.MvcUI.Controllers
 
         public JsonResult Index([Deserialize]CommandContext commandContext, string cli, bool parseAsHtml = false)
         {
-            //if (Session["commandContext"] != null)
-            //    _commandContext = (CommandContext)Session["commandContext"];
             _terminalApi.Username = User.Identity.IsAuthenticated ? User.Identity.Name : null;
             _terminalApi.IPAddress = Request.UserHostAddress;
             _terminalApi.CommandContext = commandContext;
@@ -54,8 +52,6 @@ namespace Terminal.MvcUI.Controllers
                 if (commandResult.CurrentUser != null)
                     FormsAuthentication.SetAuthCookie(commandResult.CurrentUser.Username, true);
             }
-
-            //Session["commandContext"] = commandResult.CommandContext;
 
             var displayItems = new List<ApiDisplayItem>();
             commandResult.Display.ForEach(x => displayItems.Add(new ApiDisplayItem
