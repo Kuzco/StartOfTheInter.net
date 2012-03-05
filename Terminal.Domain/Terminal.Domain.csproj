@@ -160,7 +160,7 @@
     <Compile Include="Repositories\Interfaces\ILinkRepository.cs" />
     <Compile Include="Repositories\Interfaces\IInviteCodeRepository.cs" />
     <Compile Include="Repositories\Interfaces\IVariableRepository.cs" />
-    <Compile Include="Repositories\Objects\IInviteCodeRepository.cs" />
+    <Compile Include="Repositories\Objects\InviteCodeRepository.cs" />
     <Compile Include="Repositories\Objects\LinkRepository.cs" />
     <Compile Include="Repositories\Objects\VariableRepository.cs" />
     <Compile Include="Settings\AppSettings.cs" />
