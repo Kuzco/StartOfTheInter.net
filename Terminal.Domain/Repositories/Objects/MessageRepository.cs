@@ -149,7 +149,7 @@ namespace Terminal.Domain.Repositories.Objects
         /// <returns>An expression to be used in a LINQ query.</returns>
         private Expression<Func<Message, bool>> MessageBelongsToUser(string username, bool sent)
         {
-            return x => (sent ? x.FromUser : x.ToUser).Username.Equals(username, StringComparison.OrdinalIgnoreCase);
+            return x => (sent ? x.Sender : x.Recipient).Equals(username);
         }
 
         /// <summary>

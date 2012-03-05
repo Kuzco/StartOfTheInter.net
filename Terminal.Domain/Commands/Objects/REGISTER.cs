@@ -208,7 +208,7 @@ namespace Terminal.Domain.Commands.Objects
                                         Sound = true,
                                     };
                                     var role = _userRepository.GetRole("User");
-                                    user.Roles.Add(role);
+                                    user.Roles = new List<Role> { role };
 
                                     if (lue)
                                     {
