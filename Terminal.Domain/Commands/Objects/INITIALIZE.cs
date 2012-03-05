@@ -67,9 +67,27 @@ namespace Terminal.Domain.Commands.Objects
                 if (this.CommandResult.CurrentUser == null)
                 {
                     this.CommandResult.CommandContext.Deactivate();
-                    this.CommandResult.WriteLine(DisplayMode.DontType | DisplayMode.DontWrap, AppSettings.Logo);
+                    //this.CommandResult.WriteLine(DisplayMode.DontType | DisplayMode.DontWrap, AppSettings.Logo);
+                    //this.CommandResult.WriteLine();
+                    //this.CommandResult.WriteLine("Type HELP to begin.");
+                    var displayMode = DisplayMode.Bold;
+                    this.CommandResult.WriteLine(displayMode, "Wilkommen zu dem Anfang des Internets. Bitte melden Sie sich");
+                    this.CommandResult.WriteLine(displayMode, "an, um fortzufahren.");
                     this.CommandResult.WriteLine();
-                    this.CommandResult.WriteLine("Type HELP to begin.");
+                    this.CommandResult.WriteLine(displayMode, "Bienvenue au début de l'Internet. Veuillez soumettre votre");
+                    this.CommandResult.WriteLine(displayMode, "identification pour continuer.");
+                    this.CommandResult.WriteLine();
+                    this.CommandResult.WriteLine(displayMode, "Welcome to the start of the internet. Please login to continue.");
+                    this.CommandResult.WriteLine();
+                    this.CommandResult.WriteLine(displayMode, "Добро пожаловать в начало интернета. Пожалуйста, войдите,");
+                    this.CommandResult.WriteLine(displayMode, "чтобы продолжить.");
+                    this.CommandResult.WriteLine();
+                    this.CommandResult.WriteLine(displayMode, "Välkommen till början av internet. För att fortsätta, ange dina");
+                    this.CommandResult.WriteLine(displayMode, "inloggningsuppgifter.");
+                    this.CommandResult.WriteLine();
+                    this.CommandResult.WriteLine(displayMode, "インターネットの開始へようこそ。続行するにはログインしてください。");
+                    this.CommandResult.WriteLine();
+                    this.CommandResult.WriteLine(displayMode, "欢迎到互联网的开始。请登录继续。");
                     if (DateTime.Now.Month == (int)Month.October)
                     {
                         this.CommandResult.WriteLine(DisplayMode.DontType | DisplayMode.DontWrap, @"
