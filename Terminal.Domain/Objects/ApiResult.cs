@@ -21,5 +21,7 @@ namespace Terminal.Domain.Objects
         public bool ScrollToBottom { get; set; }
 
         public List<ApiDisplayItem> DisplayItems { get; set; }
+
+        public string CommandContext { get; set; }
     }
 }

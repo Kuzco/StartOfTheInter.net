@@ -10,6 +10,7 @@ using Terminal.Domain.Enums;
 using Terminal.Domain.ExtensionMethods;
 using System.Web.Script.Serialization;
 using System.Web.Security;
+using Microsoft.Web.Mvc;
 
 namespace Terminal.MvcUI.Controllers
 {
@@ -33,13 +34,13 @@ namespace Terminal.MvcUI.Controllers
         }
 
 
-        public JsonResult Index(string cli, bool parseAsHtml = false)
+        public JsonResult Index([Deserialize]CommandContext commandContext, string cli, bool parseAsHtml = false)
         {
-            if (Session["commandContext"] != null)
-                _commandContext = (CommandContext)Session["commandContext"];
+            //if (Session["commandContext"] != null)
+            //    _commandContext = (CommandContext)Session["commandContext"];
             _terminalApi.Username = User.Identity.IsAuthenticated ? User.Identity.Name : null;
             _terminalApi.IPAddress = Request.UserHostAddress;
-            _terminalApi.CommandContext = _commandContext;
+            _terminalApi.CommandContext = commandContext;
             _terminalApi.ParseAsHtml = true;//parseAsHtml;
             var commandResult = _terminalApi.ExecuteCommand(cli);
 
@@ -54,7 +55,7 @@ namespace Terminal.MvcUI.Controllers
                     FormsAuthentication.SetAuthCookie(commandResult.CurrentUser.Username, true);
             }
 
-            Session["commandContext"] = commandResult.CommandContext;
+            //Session["commandContext"] = commandResult.CommandContext;
 
             var displayItems = new List<ApiDisplayItem>();
             commandResult.Display.ForEach(x => displayItems.Add(new ApiDisplayItem
@@ -84,7 +85,8 @@ namespace Terminal.MvcUI.Controllers
                 PasswordField = commandResult.PasswordField,
                 ScrollToBottom = commandResult.ScrollToBottom,
                 SessionId = Session.SessionID,
-                TerminalTitle = commandResult.TerminalTitle
+                TerminalTitle = commandResult.TerminalTitle,
+                CommandContext = commandResult.CommandContext.Serialize()
             };
             //string json = new JavaScriptSerializer().Serialize(apiResult);
             //return callback != null ? string.Format("{0}({1});", callback, json) : json;

@@ -36,7 +36,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Terminal.Domain.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,6 +55,9 @@
     <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc">
+      <HintPath>..\packages\Mvc3Futures.3.0.20105.0\lib\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -137,6 +141,7 @@
     <Compile Include="Entities\Variable.cs" />
     <Compile Include="Enums\DisplayMode.cs" />
     <Compile Include="Enums\Month.cs" />
+    <Compile Include="ExtensionMethods\GenericExtensions.cs" />
     <Compile Include="ExtensionMethods\ListExtentions.cs" />
     <Compile Include="ExtensionMethods\IntExtensions.cs" />
     <Compile Include="Migrations\201203020443380_InitialCreate.cs" />

@@ -13,6 +13,7 @@ using System.Text;
 using Terminal.Domain.Enums;
 using System.Net;
 using System.Configuration;
+using Microsoft.Web.Mvc;
 
 namespace Terminal.MvcUI.Controllers
 {
@@ -20,21 +21,18 @@ namespace Terminal.MvcUI.Controllers
     public class TerminalController : Controller
     {
         private TerminalCore _terminalCore;
-        private CommandContext _commandContext;
 
         public TerminalController(TerminalCore terminalCore)
         {
             _terminalCore = terminalCore;
         }
 
-        public ViewResult Index(string Cli, string Display)
+        public ViewResult Index(string Cli, string Display, [Deserialize]CommandContext CommandContext)
         {
             ModelState.Clear();
-            if (Session["commandContext"] != null)
-                _commandContext = (CommandContext)Session["commandContext"];
             _terminalCore.Username = User.Identity.IsAuthenticated ? User.Identity.Name : null;
             _terminalCore.IPAddress = Request.UserHostAddress;
-            _terminalCore.CommandContext = _commandContext;
+            _terminalCore.CommandContext = CommandContext;
             _terminalCore.ParseAsHtml = true;
             var commandResult = _terminalCore.ExecuteCommand(Cli);
 
@@ -51,8 +49,6 @@ namespace Terminal.MvcUI.Controllers
                 if (commandResult.CurrentUser != null)
                     FormsAuthentication.SetAuthCookie(commandResult.CurrentUser.Username, true);
             }
-
-            Session["commandContext"] = commandResult.CommandContext;
 
             var display = new StringBuilder();
             foreach (var displayItem in commandResult.Display)
@@ -73,7 +69,8 @@ namespace Terminal.MvcUI.Controllers
                 Display = Display + display.ToString(),
                 PasswordField = commandResult.PasswordField,
                 Notifications = string.Empty,
-                Title = commandResult.TerminalTitle
+                Title = commandResult.TerminalTitle,
+                CommandContext = commandResult.CommandContext
             };
 
             return View(viewModel);

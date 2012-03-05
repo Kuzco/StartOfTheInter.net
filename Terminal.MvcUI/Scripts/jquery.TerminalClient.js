@@ -14,12 +14,13 @@
     function SendCommand(commandString)
     {
         var apiUrl = $commandForm.data('apiUrl');
+        var commandContext = $commandForm.data('commandContext');
         $cli.data('disablePost', true);
         DisplayLoading();
         $.ajax({
             dataType: 'json',
             type: 'post',
-            data: { parseAsHtml: true, cli: commandString },
+            data: { commandContext: commandContext, parseAsHtml: true, cli: commandString },
             url: apiUrl,
             success: function (apiResult)
             {
@@ -39,6 +40,7 @@
 
     function ParseResult(apiResult)
     {
+        $commandForm.data('commandContext', apiResult.CommandContext);
         $context.text(apiResult.ContextText);
         if (apiResult.PasswordField && !$cli.data('passwordField'))
         {

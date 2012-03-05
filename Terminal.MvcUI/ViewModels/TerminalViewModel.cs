@@ -14,5 +14,6 @@ namespace Terminal.MvcUI.ViewModels
         public string ContextText { get; set; }
         public bool PasswordField { get; set; }
         public string Title { get; set; }
+        public CommandContext CommandContext { get; set; }
     }
 }

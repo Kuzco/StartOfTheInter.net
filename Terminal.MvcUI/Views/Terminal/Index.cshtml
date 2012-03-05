@@ -136,6 +136,7 @@ else
             @using (Html.BeginForm("Index", "Terminal", FormMethod.Post, new { id = "commandForm" }))
             {
                 <div>
+                    @Html.Serialize("CommandContext", Model.CommandContext)
                     <div id="terminalDisplay">
                         <noscript>
                             @Html.Raw(Model.Display)
